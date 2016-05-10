@@ -60,6 +60,8 @@ app.controller('MainCtrl', function ($scope, $element) {
 				angular.element(element[0]).bind('click', function () {
 					angular.element($("[my-cell]")).removeClass('active');
 					element.toggleClass('active');
+					angular.element($("tbody tr")).removeClass('cross');
+					element.parent().toggleClass('cross');
 					scope.$emit('cell-activated', { deadline: scope.deadline.deadline , level: scope.level});
 					
 				});

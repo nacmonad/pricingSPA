@@ -42,7 +42,9 @@ tbody td.active {
 	background-color: rgb(0, 177, 225) !important;
 	border-color: #fff;
 }
-
+tbody .cross th {
+	background:rgba(0,0,0,0.05);
+}
 .price-table {
 	width:100%;
 }
