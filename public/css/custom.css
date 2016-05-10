@@ -12,15 +12,12 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     cursor: pointer;
-    
 
 }
 .selector-button:hover{
-	background:rgba(0,0,0,0.01);
+	background:rgba(0,0,0,0.1);
 
 }
-
-
 
 .selector-button span {
 	display:flex;
@@ -38,7 +35,13 @@ li.active {
 	background-color: rgb(0, 177, 225) !important;
 	border-color: #fff;
 }
-
+tbody td:hover {
+	background:rgba(0,0,0,0.01);
+}
+tbody td.active {
+	background-color: rgb(0, 177, 225) !important;
+	border-color: #fff;
+}
 
 .price-table {
 	width:100%;

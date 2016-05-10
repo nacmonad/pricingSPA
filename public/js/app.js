@@ -38,15 +38,31 @@ app.controller('MainCtrl', function ($scope, $element) {
 			{deadline:100, text:"In 1 week"},
 			{deadline:200, text:"In 2 weeks"}];
 
-	console.log($element[0]);
-	//console.log($attrs[0]);
+			$scope.$on('cell-activated', function (event, args) {
+				console.log("cell " + args.deadline + ", " + args.level);
+
+			});
 })
 .directive('myCell', function() {
 	return {
 		restrict: 'A',
 		scope: true,
+		controller: ['$scope','$element','$timeout', function ($scope, $element,$timeout) {
+			$timeout(function() {
+				console.log("hello " + $scope.deadline.deadline + " , " + $scope.level);    //angular automatically goes to the parrent scope controller (EssayCtrl, PresCtrl, DissCtrl) to get deadline.deadline
+			
+			});  
+			
+
+		}],
 		link: function(scope,element,attrs) {
 				scope.level = attrs.level;
+				angular.element(element[0]).bind('click', function () {
+					angular.element($("[my-cell]")).removeClass('active');
+					element.toggleClass('active');
+					scope.$emit('cell-activated', { deadline: scope.deadline.deadline , level: scope.level});
+					
+				});
 		}
 	}
 })
