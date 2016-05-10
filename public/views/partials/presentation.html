@@ -3,6 +3,11 @@
 			<tr>
 				<th ng-repeat="head in heads track by $index" ng-style="{'width':114+'px'}">
 					<p class="txt" data-level="{{$index}}" ng-bind-html="head"></p>
+					<div ng-if="$index == 2" class="popular-wrap">
+						<div class="popular-border type-two">
+							<p>Popular</p>
+						</div>
+					</div>
 				</th>
 				
 			</tr>

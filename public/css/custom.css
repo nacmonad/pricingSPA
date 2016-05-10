@@ -97,3 +97,81 @@ tbody tr , tbody td{
 tbody td {
 	cursor:pointer;
 }
+
+.popular-wrap {
+	display:block;
+	position:relative;
+}
+ .type-one {
+	position: absolute;
+	overflow: hidden;
+	height: 33.75em;
+	 top: -3.5em;
+    left: -0.625em;
+    right: -0.625em;
+    border-radius: 0.1875em;
+    border: 1.5px solid rgba(30, 207, 225,0.5);
+    overflow: hidden;
+    -webkit-pointer-events: none;
+    -moz-pointer-events: none;
+    pointer-events: none;
+}
+
+ .type-one p {
+    font: 0.625em/2 'PT Sans', sans-serif;
+    color: rgba(0, 70, 150,1);
+    background-color: rgba(0, 177, 225,0.5);
+    text-transform: uppercase;
+    position: absolute;
+    top: 1em;
+    right: -3em;
+    width: 10em;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-transform: perspective(1px) rotate(45deg);
+    -moz-transform: perspective(1px) rotate(45deg);
+    -ms-transform: perspective(1px) rotate(45deg);
+    -o-transform: perspective(1px) rotate(45deg);
+    transform: perspective(1px) rotate(45deg);
+    z-index: 10;
+    -webkit-pointer-events: none;
+    -moz-pointer-events: none;
+    pointer-events: none;
+}
+
+.type-two {
+	position: absolute;
+	overflow: hidden;
+	height: 25.5em;
+	 top: -3.5em;
+    left: -0.625em;
+    right: -0.625em;
+    border-radius: 0.1875em;
+    border: 1.5px solid rgba(30, 207, 225,0.5);
+    overflow: hidden;
+    -webkit-pointer-events: none;
+    -moz-pointer-events: none;
+    pointer-events: none;
+}
+
+ .type-two p {
+    font: 0.625em/2 'PT Sans', sans-serif;
+    color: rgba(0, 70, 150,1);
+    background-color: rgba(0, 177, 225,0.5);
+    text-transform: uppercase;
+    position: absolute;
+    top: 1em;
+    right: -3em;
+    width: 10em;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-transform: perspective(1px) rotate(45deg);
+    -moz-transform: perspective(1px) rotate(45deg);
+    -ms-transform: perspective(1px) rotate(45deg);
+    -o-transform: perspective(1px) rotate(45deg);
+    transform: perspective(1px) rotate(45deg);
+    z-index: 10;
+    -webkit-pointer-events: none;
+    -moz-pointer-events: none;
+    pointer-events: none;
+}
