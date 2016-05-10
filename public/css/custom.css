@@ -70,6 +70,12 @@ li.active {
     font-size: 10px;
 }
 
+.price-table tbody th .subline {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 0.75em;
+    line-height: 1.3;
+    color: #9e9a9a;
+}
 .txt {
 	display: block;
 	-webkit-margin-before: 1em;
@@ -78,6 +84,7 @@ li.active {
     -webkit-margin-end: 0px;
 }
 
-.price-table .price-table-dissertation th { 
-	width:228px;
+
+tbody tr , tbody td{
+	height:44px;
 }
