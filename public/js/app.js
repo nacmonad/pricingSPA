@@ -29,7 +29,7 @@ app.controller('MainCtrl', function ($scope, $element) {
 	}
 })
 
-.controller('EssayCtrl', function ($scope, $element) {
+.controller('EssayCtrl', function ($scope, $element, $attrs) {
 	$scope.heads = ["When you need <br> it to be done?", "High School", "College", "University", "Master's"];
 	$scope.deadlines = [{deadline:5, text:"In 3-11 hours"},
 			{deadline:15, text:"In 12-24 hours"},
@@ -39,6 +39,16 @@ app.controller('MainCtrl', function ($scope, $element) {
 			{deadline:200, text:"In 2 weeks"}];
 
 	console.log($element[0]);
+	//console.log($attrs[0]);
+})
+.directive('myCell', function() {
+	return {
+		restrict: 'A',
+		scope: true,
+		link: function(scope,element,attrs) {
+				scope.level = attrs.level;
+		}
+	}
 })
 
 .controller('PresCtrl', function ($scope, $element) {

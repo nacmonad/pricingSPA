@@ -2,19 +2,20 @@
 		<thead>
 			<tr>
 				<th ng-repeat="head in heads track by $index" ng-style="{'width':114+'px'}">
-					<p class="txt" ng-bind-html="head"></p>
+					<p class="txt" data-level="{{$index}}" ng-bind-html="head"></p>
 				</th>
 				
 			</tr>
 		</thead>
 		<tbody >
-			<tr ng-repeat="deadline in deadlines track by $index" data-headline="{{deadline.deadline}}">
+			<tr ng-repeat="deadline in deadlines" data-headline="{{deadline.deadline}}">
 				<th>
 					<p class="txt">	{{deadline.text}} </p>
 					<p class="subline"> Computed Date</p>
 				</th>
-				<td></td>
-				<td></td>
+				<td my-cell level="4"> {{deadline.deadline}}  {{level}} </td>
+				<td my-cell level="5"> {{deadline.deadline}}  {{level}} </td>
 			</tr>
 		</tbody>
 </table>
+

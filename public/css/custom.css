@@ -88,3 +88,7 @@ li.active {
 tbody tr , tbody td{
 	height:44px;
 }
+
+tbody td {
+	cursor:pointer;
+}
