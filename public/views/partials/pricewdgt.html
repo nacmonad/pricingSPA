@@ -1,19 +1,30 @@
 <div>
+	<form class="my-input" action="">
 	<h2> {{ totalCost | currency}}</h2>
-	<span = "currency-type"> {{ currencyType }} </span>
-	<p> <b>Deadline</b>{{$parent.selectedDeadline}} </p>
-	<p> <b>Level </b>{{$parent.difficultyLevel}} </p>
+	<div class="currency-selector">
+		<select  name="currency" ng-model="currencyType">
+			  <option value="CAD" selected="selected">CAD</option>
+			  <option value="USD">USD</option>
+		</select>
+	</div>
+	<p> <b>Deadline</b> {{$parent.selectedDeadline}} </p>
+	<p> <b>Level </b> {{$parent.difficultyLevel}} </p>
 	<p> {{ pricePerPage | currency }} /per page </p>
-	
-	<form class="page-word-input" action="">
-	<select name="currency" ng-model="currencyType">
-	  <option value="CAD" selected="selected">CAD</option>
-	  <option value="USD">USD</option>
-	</select>
-		
-			<input type="text" ng-model="numberOfPages"> 
-			<input type="text" ng-Model="numberOfWords"> 
+
+
+		<div class="words-pages-wrap">
+			<input type="text" ng-model="numberOfPages" ng-show="pageBool">
+			<input type="text" ng-Model="numberOfWords" ng-hide="pageBool">
+			<div class="page-selector" ng-click="pageActivate()"> pages </div>
+			<div class="word-selector" ng-click="wordActivate()"> words </div>
+		</div>
 		
 	</form>
+	
+	<div class="free-with-order">
+		<ul>
+			<li class="free-item" ng-repeat ="item in freeWithOrder"> <i class="glyphicon glyphicon-ok-sign"></i> {{item}} </li>
+		</ul>
+	</div>
 
 </div>

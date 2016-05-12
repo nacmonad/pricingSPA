@@ -86,8 +86,6 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 			{deadline:6, text:"In 3-7 days"},
 			{deadline:8, text:"In 8+ days"},
 			];
-
-	console.log($element[0]);
 })
 
 .controller('PriceWdgtCtrl', function ($scope, $element) {
@@ -98,6 +96,24 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 	$scope.numberOfWords = 250;
 	$scope.totalCost = 420.00;
 	$scope.currencyType = "CAD";
+	$scope.freeWithOrder = ["Bibliography and Title","Unlimited revisions","Formatting","Proofreading","Assignment Scheduler"]
+	$scope.pageBool = true;
+
+
+	$scope.pageActivate = function () {
+		$scope.pageBool = true;
+		$scope.numberOfPages = $scope.numberOfWords/300;
+		console.log("pageactivate!" + $scope.numberOfPages);
+
+		}
+	$scope.wordActivate = function () {
+		$scope.pageBool = false;
+		$scope.numberOfWords = 300*$scope.numberOfPages;
+		console.log("wordactivate! " + $scope.numberOfWords);
+
+	}
+
+
 
 	$scope.$watch('numberOfPages', function () {
 		console.log("page change");

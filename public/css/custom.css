@@ -51,10 +51,10 @@ li.active {
 
 }
 .object-b{
+    position:relative;
     margin-left:25px;
     margin-right:25px;
-    border: 1px solid black;
-    width:400px;
+    width:380px;
 }
 
 @media only screen and (max-width: 992px) {
@@ -71,6 +71,7 @@ li.active {
 
     }
     .object-b{
+
         margin:25px;
         border: 1px solid black;
         width:100%;
@@ -236,4 +237,36 @@ tbody td {
     -webkit-pointer-events: none;
     -moz-pointer-events: none;
     pointer-events: none;
+}
+
+/* the price widget */
+.object-b form {
+    border: solid 1px rgba(0,0,0,0.5);
+}
+
+.object-b ul {
+    padding-left: 5px;
+}
+.object-b li {
+    list-style-type:none;
+}
+
+.object-b li i {
+    opacity: 0.5;
+}
+
+.object-b .currency-selector {
+    position:absolute;
+    top:5px;
+    right:5px;
+    border:none;
+}
+
+.object-b .words-pages-wrap input {
+    width:60px;
+}
+.object-b .words-pages-wrap div {
+    display:inline-block;
+    border: solid black 1px;
+    padding: 5px 10px 5px 10px;
 }
