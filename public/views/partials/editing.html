@@ -1,13 +1,8 @@
-<table class="price-table price-table-essay">
+<table class="price-table price-table-editing" >
 		<thead>
 			<tr>
 				<th ng-repeat="head in heads track by $index" ng-style="{'width':114+'px'}">
 					<p class="txt" data-level="{{$index}}" ng-bind-html="head"></p>
-					<div ng-if="$index == 2" class="popular-wrap">
-						<div class="popular-border type-one">
-							<p>Popular</p>
-						</div>
-					</div>
 				</th>
 				
 			</tr>
@@ -16,7 +11,7 @@
 			<tr ng-repeat="deadline in deadlines" data-headline="{{deadline.deadline}}">
 				<th>
 					<p class="txt">	{{deadline.text}} </p>
-					<p class="subline"> {{mappedDeadline[$index]}}</p>
+					<p class="subline">  {{mappedDeadline[$index+7]}} </p>
 				</th>
 				<td my-cell level="1" > {{deadline.deadline}}  {{level}} </td>
 				<td my-cell level="2" > {{deadline.deadline}}  {{level}} </td>

@@ -3,6 +3,7 @@
 }
 .selector-button {
 	display: inline-block;
+    font-family: 'Montserrat', sans-serif;
 	border: 1px solid #dadada;
 	border-radius: 2.5px;
 	width: 136px;
@@ -30,11 +31,53 @@
 	margin-right:9px;
 }
 
-
 li.active {
 	background-color: rgb(0, 177, 225) !important;
 	border-color: #fff;
 }
+
+/* overall flex distribution of page objects */ 
+#my-main-wrap {
+    padding-left:100px;
+
+}
+.my-flex-wrap {
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+}
+.object-a {
+
+}
+.object-b{
+    margin-left:25px;
+    margin-right:25px;
+    border: 1px solid black;
+    width:400px;
+}
+
+@media only screen and (max-width: 992px) {
+    #my-main-wrap {
+        padding-left:25px;
+
+    }
+     .my-flex-wrap {
+        display:flex;
+        flex-direction:column;
+        justify-content:space-between;
+    }
+    .object-a {
+
+    }
+    .object-b{
+        margin:25px;
+        border: 1px solid black;
+        width:100%;
+    }
+
+}
+
 tbody td:hover {
 	background:rgba(0,0,0,0.01);
 }
@@ -50,13 +93,19 @@ tbody .cross th {
 }
 
 .price-table thead th:first-child {
-    font-family: 'PT Sans', sans-serif;
+
     line-height: 1.2;
     color: rgb(0, 177, 225);
     width: 10.3125em;
 }
 
+.price-table thead th:first-child .txt {
+    font-size:12px;
+    font-family: 'PT Sans', sans-serif;
+}
+
 .price-table thead th {
+
     height: 2.625em;
     background-color: #FBFBFB;
 }
@@ -71,7 +120,15 @@ tbody .cross th {
     border: 1px solid #DADADA;
 }
 
-.price-table th .txt {
+.price-table th:first-child {
+
+}
+.price-table thead th .txt {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+.price-table tbody th .txt {
+    font-family: 'PT Sans', sans-serif;
     font-size: 10px;
 }
 
@@ -106,7 +163,7 @@ tbody td {
  .type-one {
 	position: absolute;
 	overflow: hidden;
-	height: 29.25em;
+	height: 28.75em;
 	 top: -3em;
     left: -0.625em;
     right: -0.625em;
@@ -119,7 +176,9 @@ tbody td {
 }
 
  .type-one p {
-    font: 0.625em/2 'PT Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    margin:5px;
     color: rgba(0, 70, 150,1);
     background-color: rgba(0, 177, 225,0.5);
     text-transform: uppercase;
@@ -143,7 +202,7 @@ tbody td {
 .type-two {
 	position: absolute;
 	overflow: hidden;
-	height: 22.25em;
+	height: 21.75em;
 	top: -3em;
     left: -0.625em;
     right: -0.625em;
@@ -156,7 +215,9 @@ tbody td {
 }
 
  .type-two p {
-    font: 0.625em/2 'PT Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    margin:5px;
     color: rgba(0, 70, 150,1);
     background-color: rgba(0, 177, 225,0.5);
     text-transform: uppercase;

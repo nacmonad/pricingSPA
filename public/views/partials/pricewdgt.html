@@ -1,0 +1,19 @@
+<div>
+	<h2> {{ totalCost | currency}}</h2>
+	<span = "currency-type"> {{ currencyType }} </span>
+	<p> <b>Deadline</b>{{$parent.selectedDeadline}} </p>
+	<p> <b>Level </b>{{$parent.difficultyLevel}} </p>
+	<p> {{ pricePerPage | currency }} /per page </p>
+	
+	<form class="page-word-input" action="">
+	<select name="currency" ng-model="currencyType">
+	  <option value="CAD" selected="selected">CAD</option>
+	  <option value="USD">USD</option>
+	</select>
+		
+			<input type="text" ng-model="numberOfPages"> 
+			<input type="text" ng-Model="numberOfWords"> 
+		
+	</form>
+
+</div>
