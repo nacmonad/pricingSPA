@@ -42,20 +42,21 @@ li.active {
 
 }
 .my-flex-wrap {
-    display:flex;
-    flex-direction:row;
-    justify-content:space-between;
-    align-items:center;
+    
 }
 .object-a {
-
+    padding:0;
+    
 }
 .object-b{
     position:relative;
+    display:inline-block;
+    padding:0;
     margin-left:25px;
     margin-right:25px;
-    width:380px;
+    width:200px;
 }
+
 
 @media only screen and (max-width: 992px) {
     #my-main-wrap {
@@ -71,11 +72,13 @@ li.active {
 
     }
     .object-b{
-
+    
         margin:25px;
-        border: 1px solid black;
-        width:100%;
     }
+    .free-with-order {
+    display:inline-block;
+    float:left;
+}
 
 }
 
@@ -194,7 +197,7 @@ tbody td {
     -ms-transform: perspective(1px) rotate(45deg);
     -o-transform: perspective(1px) rotate(45deg);
     transform: perspective(1px) rotate(45deg);
-    z-index: 10;
+    z-index: 2;
     -webkit-pointer-events: none;
     -moz-pointer-events: none;
     pointer-events: none;
@@ -203,7 +206,7 @@ tbody td {
 .type-two {
 	position: absolute;
 	overflow: hidden;
-	height: 21.75em;
+	height: 28.75em;
 	top: -3em;
     left: -0.625em;
     right: -0.625em;
@@ -233,7 +236,7 @@ tbody td {
     -ms-transform: perspective(1px) rotate(45deg);
     -o-transform: perspective(1px) rotate(45deg);
     transform: perspective(1px) rotate(45deg);
-    z-index: 10;
+    z-index: 2;
     -webkit-pointer-events: none;
     -moz-pointer-events: none;
     pointer-events: none;
@@ -262,11 +265,51 @@ tbody td {
     border:none;
 }
 
+.object-b .words-pages-wrap {
+
+}
 .object-b .words-pages-wrap input {
     width:60px;
 }
 .object-b .words-pages-wrap div {
-    display:inline-block;
+    display:inline;
     border: solid black 1px;
     padding: 5px 10px 5px 10px;
+}
+
+
+form.my-input {
+    padding:5px;
+}
+.order-now {
+    display:flex;
+    cursor:pointer;
+    width:200px;
+    height: 3em;
+    justify-content:center;
+    align-items:center;
+    border: solid black 1px;
+
+}
+
+.order-now a {
+    text-decoration:none;
+}
+
+.word-selector {
+    margin-left:0px;
+    margin-right:0px;
+}
+.page-selector {
+    margin-left:0px;
+    margin-right:0px;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.free-with-order b{
+    font-family: 'Montserrat', sans-serif;
+    font-size:10px;
 }

@@ -2,7 +2,7 @@
 	<form class="my-input" action="">
 	<h2> {{ totalCost | currency}}</h2>
 	<div class="currency-selector">
-		<select  name="currency" ng-model="currencyType">
+		<select  name="currency" ng-model="formData.currencyType">
 			  <option value="CAD" selected="selected">CAD</option>
 			  <option value="USD">USD</option>
 		</select>
@@ -13,18 +13,21 @@
 
 
 		<div class="words-pages-wrap">
-			<input type="text" ng-model="numberOfPages" ng-show="pageBool">
-			<input type="text" ng-Model="numberOfWords" ng-hide="pageBool">
+			<input type="number" ng-model="formData.pages"  ng-show="pageBool">
+			<input type="number" ng-model="formData.words"  ng-hide="pageBool">
 			<div class="page-selector" ng-click="pageActivate()"> pages </div>
 			<div class="word-selector" ng-click="wordActivate()"> words </div>
 		</div>
 		
 	</form>
 	
-	<div class="free-with-order">
+	<div class = "order-now"><a href="">Order Now</a></div>
+
+</div>
+
+<div class="free-with-order">
+		<b>Free with your order: </b>
 		<ul>
 			<li class="free-item" ng-repeat ="item in freeWithOrder"> <i class="glyphicon glyphicon-ok-sign"></i> {{item}} </li>
 		</ul>
-	</div>
-
 </div>

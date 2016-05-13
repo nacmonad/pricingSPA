@@ -88,40 +88,50 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 			];
 })
 
-.controller('PriceWdgtCtrl', function ($scope, $element) {
+.controller('PriceWdgtCtrl', function ($scope, $element, $http) {
 	console.log("derp im the price widget!");
 
-	$scope.pricePerPage = 20.00;
-	$scope.numberOfPages = 1;
-	$scope.numberOfWords = 250;
-	$scope.totalCost = 420.00;
-	$scope.currencyType = "CAD";
+	$scope.formData = {};
+	$scope.formData.pricePerPage = 20.00;
+	$scope.formData.pages = 1;
+	$scope.formData.words = 300;
+	$scope.formData.totalCost = 420.00;
+	$scope.formData.currencyType = "CAD";
+	
 	$scope.freeWithOrder = ["Bibliography and Title","Unlimited revisions","Formatting","Proofreading","Assignment Scheduler"]
 	$scope.pageBool = true;
-
-
+	
+	$http.get('http://api.fixer.io/latest?base=USD').then(
+		function successCb(res) {
+			$scope.formData.fxusd = res.data;
+			console.log("USDCAD = " + $scope.formData.fxusd.rates.CAD);
+		}, function errorCb(res) {
+			console.log("err : " + res);
+		});
+	
 	$scope.pageActivate = function () {
 		$scope.pageBool = true;
-		$scope.numberOfPages = $scope.numberOfWords/300;
-		console.log("pageactivate!" + $scope.numberOfPages);
-
+		console.log("pageactivate! pages: " + $scope.formData.pages + "words: " + $scope.formData.words);
+		$scope.formData.pages = $scope.formData.words/300;
 		}
 	$scope.wordActivate = function () {
 		$scope.pageBool = false;
-		$scope.numberOfWords = 300*$scope.numberOfPages;
-		console.log("wordactivate! " + $scope.numberOfWords);
+		console.log("wordactivate! pages: " + $scope.formData.pages + "words: " + $scope.formData.words);
+		$scope.formData.words = $scope.formData.pages*300;
 
 	}
 
+	
 
-
-	$scope.$watch('numberOfPages', function () {
+	$scope.$watch(function () { 
+		return $scope.formData.pages}, function () {
 		console.log("page change");
-		$scope.numberOfWords = 300 * $scope.numberOfPages;
+		//$scope.numberOfWords = 300 * $scope.numberOfPages;
 	});
-	$scope.$watch('numberOfWords', function () {
+	$scope.$watch(function () { 
+		return $scope.formData.words}, function () {
 		console.log("wordcnt change");
-		$scope.numberOfPages = $scope.numberOfWords/300;;
+		//$scope.numberOfPages = $scope.numberOfWords/300;;
 	});
 })
 

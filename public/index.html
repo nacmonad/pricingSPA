@@ -12,21 +12,23 @@
 </head>
 
 <body ng-controller="MainCtrl" >
+<!-- 
 
+taking too long on load times...
+-->
 	
 	
 	<div id="my-main-wrap" class="container">
 		<div ng-include = "'views/partials/myselector.html'"></div>
-		<div class="my-flex-wrap">
-			<div class="object-a">
-				<h6>Select your deadline and academic level</h6><br>
+		<br><h6>Select your deadline and academic level</h6><br>
+			<div class="col-xs-12 col-md-6 object-a">
 				<div ng-include = "'views/partials/essay.html'" ng-show="essayBool" ng-controller="EssayCtrl"></div>
 				<div  ng-include = "'views/partials/presentation.html'" ng-show="presBool" ng-controller="PresCtrl"></div>
 				<div  ng-include = "'views/partials/editing.html'" ng-show = "dissBool" ng-controller="DissCtrl"></div>
 			</div>
-			<div class="object-b" ng-controller="PriceWdgtCtrl" ng-include="'views/partials/pricewdgt.html'">
+			<div class="col-xs-4 object-b" ng-controller="PriceWdgtCtrl" ng-include="'views/partials/pricewdgt.html'">
 			</div>
-		</div>
+		
 	</div>
 <br><br><hr><br><br>
 
@@ -35,7 +37,8 @@
 		<p><b>Now:</b> {{dateNow | date:'medium'}} </p>
 		<p><b>Selected Deadline:</b> {{ selectedDeadline }}</p>
 		<p><b>Selected Difficulty:</b> {{ difficultyLevel }}</p>
-		<p><b>Delta T:</b></p>
+		<p><b>Delta T: </b></p>
+		<p><b>USDCAD: </b> {{fxusd.rates.CAD}} </p>
 	</div>
 
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
