@@ -21,12 +21,12 @@ taking too long on load times...
 	<div id="my-main-wrap" class="container">
 		<div ng-include = "'views/partials/myselector.html'"></div>
 		<br><h6>Select your deadline and academic level</h6><br>
-			<div class="col-xs-12 col-md-6 object-a">
+			<div class="col-xs-12 col-md-8 object-a">
 				<div ng-include = "'views/partials/essay.html'" ng-show="essayBool" ng-controller="EssayCtrl"></div>
 				<div  ng-include = "'views/partials/presentation.html'" ng-show="presBool" ng-controller="PresCtrl"></div>
 				<div  ng-include = "'views/partials/editing.html'" ng-show = "dissBool" ng-controller="DissCtrl"></div>
 			</div>
-			<div class="col-xs-4 object-b" ng-controller="PriceWdgtCtrl" ng-include="'views/partials/pricewdgt.html'">
+			<div class="col-xs-4 col-md-4 object-b" ng-controller="PriceWdgtCtrl" ng-include="'views/partials/pricewdgt.html'">
 			</div>
 		
 	</div>
