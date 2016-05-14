@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/nacmonad/pricingSPA#readme",
   "dependencies": {
+    "angular-counter": "^0.2.1",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
     "nunjucks": "^2.4.2"

@@ -1,4 +1,4 @@
-var app = angular.module('PricingApp', ['ngAnimate','ngSanitize']);
+var app = angular.module('PricingApp', ['ngAnimate','ngSanitize','counter']);
 
 app.controller('MainCtrl', function ($scope, $element, $timeout) {
 
@@ -120,18 +120,22 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 		$scope.formData.words = $scope.formData.pages*300;
 
 	}
-
+	$scope.counterFinish = function () {
+		console.log("done counting");
+	}
 	
 
 	$scope.$watch(function () { 
-		return $scope.formData.pages}, function () {
-		console.log("page change");
+		return $scope.formData.pages * $scope.formData.pricePerPage }, function (newValue,oldValue) {
+			$scope.formData.oldCost = oldValue;
+			$scope.formData.totalCost = newValue;
+			console.log("total change from " + oldValue + " to " + newValue);
 		//$scope.numberOfWords = 300 * $scope.numberOfPages;
 	});
 	$scope.$watch(function () { 
 		return $scope.formData.words}, function () {
 		console.log("wordcnt change");
-		//$scope.numberOfPages = $scope.numberOfWords/300;;
+		$scope.numberOfPages = $scope.numberOfWords/300;;
 	});
 })
 
