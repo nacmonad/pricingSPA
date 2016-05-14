@@ -16,22 +16,16 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 		$scope.presBool = false;
 		$scope.dissBool = false;
 		$scope.essayBool = true;
-		console.log("essayBool onw true");
-
 	}
 	$scope.showPres = function () {
 		$scope.essayBool = false;
 		$scope.dissBool = false;
 		$scope.presBool = true;
-		console.log("presyBool now true")
-
 	}
 	$scope.showDiss = function () {
 		$scope.essayBool = false;
 		$scope.presBool = false;
 		$scope.dissBool = true;
-		console.log("diss Bool now true")
-
 	}
 
 	$scope.mapDeadline = function () {
@@ -89,8 +83,6 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 })
 
 .controller('PriceWdgtCtrl', function ($scope, $element, $http) {
-	console.log("derp im the price widget!");
-
 	$scope.formData = {};
 	$scope.formData.pricePerPage = 20.00;
 	$scope.formData.pages = 1;
@@ -129,13 +121,10 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 		return $scope.formData.pages * $scope.formData.pricePerPage }, function (newValue,oldValue) {
 			$scope.formData.oldCost = oldValue;
 			$scope.formData.totalCost = newValue;
-			console.log("total change from " + oldValue + " to " + newValue);
-		//$scope.numberOfWords = 300 * $scope.numberOfPages;
 	});
 	$scope.$watch(function () { 
 		return $scope.formData.words}, function () {
-		console.log("wordcnt change");
-		$scope.formData.pages = $scope.words/300;
+		$scope.formData.pages = $scope.formData.words/300;
 		$scope.formData.totalCost = $scope.formData.pages * $scope.formData.pricePerPage;
 	});
 })
