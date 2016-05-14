@@ -135,7 +135,8 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 	$scope.$watch(function () { 
 		return $scope.formData.words}, function () {
 		console.log("wordcnt change");
-		$scope.numberOfPages = $scope.numberOfWords/300;;
+		$scope.numberOfPages = $scope.numberOfWords/300;
+		$scope.formData.totalCost = $scope.formData.pages * $scope.formData.pricePerPage;
 	});
 })
 
