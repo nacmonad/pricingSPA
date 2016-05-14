@@ -6,7 +6,7 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 	$scope.presBool = false;
 	$scope.dissBool = false;
 	$scope.heads = ["What is your <br> deadline?", "High School", "College", "University", "Master's","PhD"];
-	//these three are needed for the mapDeadline to work properly... 
+	//these three are needed for the mapDeadline to work properly... 	
 	$scope.dateNow = new Date();
 	$scope.tempDate = new Date();
 	$scope.temp2Date = new Date();
@@ -58,7 +58,7 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 					$scope.selectedDeadline = args.deadline;
 					$scope.difficultyLevel = args.level;
 					$scope.$apply();
-				})
+				});
 	
 
 })
@@ -99,7 +99,6 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 
 .controller('PriceWdgtCtrl', function ($scope, $element, $http) {
 	$scope.formData = {};
-	$scope.formData.pricePerPage = 20.00;
 	$scope.formData.pages = 1;
 	$scope.formData.words = 300;
 	$scope.formData.totalCost = 420.00;
@@ -130,7 +129,9 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 	$scope.counterFinish = function () {
 		console.log("done counting");
 	}
-	
+	$scope.orderNow = function () {
+		console.log($scope.formData);
+	}
 
 	$scope.$watch(function () { 
 		return $scope.formData.pages * $scope.formData.pricePerPage }, function (newValue,oldValue) {
@@ -142,6 +143,13 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 		$scope.formData.pages = $scope.formData.words/300;
 		$scope.formData.totalCost = $scope.formData.pages * $scope.formData.pricePerPage;
 	});
+
+	$scope.$watch(function() {
+		return $scope.difficultyLevel / $scope.selectedDeadline;
+	}, function () {
+		$scope.formData.pricePerPage = 20 * $scope.difficultyLevel / $scope.selectedDeadline;
+	});
+
 })
 
 .directive('myCell', function() {

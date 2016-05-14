@@ -14,7 +14,7 @@
 	</div>
 	<p> <b>Deadline</b> {{$parent.selectedDeadline}} </p>
 	<p> <b>Level </b> {{$parent.difficultyLevel}} </p>
-	<p> {{ formData.pricePerPage | currency }} /per page </p>
+	<p ng-init="formData.pricePerPage = 20.00"> {{ formData.pricePerPage | currency }} /per page </p>
 
 
 		<div class="words-pages-wrap">
@@ -26,7 +26,7 @@
 		
 	</form>
 	
-	<div class = "order-now"><a href="">Order Now</a></div>
+	<div class = "order-now" ng-click="orderNow()"><a>Order Now</a></div>
 
 </div>
 
