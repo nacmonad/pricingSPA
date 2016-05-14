@@ -101,13 +101,13 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 	$scope.freeWithOrder = ["Bibliography and Title","Unlimited revisions","Formatting","Proofreading","Assignment Scheduler"]
 	$scope.pageBool = true;
 	
-	$http.get('http://api.fixer.io/latest?base=USD').then(
-		function successCb(res) {
-			$scope.formData.fxusd = res.data;
-			console.log("USDCAD = " + $scope.formData.fxusd.rates.CAD);
-		}, function errorCb(res) {
-			console.log("err : " + res);
-		});
+	//$http.get('http://api.fixer.io/latest?base=USD').then(
+	//	function successCb(res) {
+	//		$scope.formData.fxusd = res.data;
+	//		console.log("USDCAD = " + $scope.formData.fxusd.rates.CAD);
+	//	}, function errorCb(res) {
+	//		console.log("err : " + res);
+	//	});
 	
 	$scope.pageActivate = function () {
 		$scope.pageBool = true;
@@ -135,7 +135,7 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 	$scope.$watch(function () { 
 		return $scope.formData.words}, function () {
 		console.log("wordcnt change");
-		$scope.formData.pages = $scope.numberOfWords/300;
+		$scope.formData.pages = $scope.words/300;
 		$scope.formData.totalCost = $scope.formData.pages * $scope.formData.pricePerPage;
 	});
 })
