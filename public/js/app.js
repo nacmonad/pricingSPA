@@ -6,7 +6,11 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 	$scope.presBool = false;
 	$scope.dissBool = false;
 	$scope.heads = ["What is your <br> deadline?", "High School", "College", "University", "Master's","PhD"];
+	//these three are needed for the mapDeadline to work properly... 
 	$scope.dateNow = new Date();
+	$scope.tempDate = new Date();
+	$scope.temp2Date = new Date();
+	
 	$scope.selectedDeadline;
 	$scope.difficultyLevel;
 	$scope.mappedDeadline;
@@ -29,9 +33,20 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 	}
 
 	$scope.mapDeadline = function () {
-		console.log($scope.dateNow);
-		$scope.mappedDeadline = ["Computed DL1", "Computed D2", "Computed DL3","Computed DL4","Computed DL5","Computed DL6","Computed DL7","Computed DL8","Computed DL9" ];
+	
+		$scope.mappedDeadline = [
+			dateFormat($scope.tempDate.setHours($scope.tempDate.getHours() + 7), "dddd mmmm dS, h:00 TT"), 
+			dateFormat($scope.tempDate.setHours($scope.tempDate.getHours() + 6), "dddd mmmm dS, h:00 TT"), 
+			dateFormat($scope.tempDate.setHours($scope.tempDate.getHours() + 12), "dddd mmmm dS, h:00 TT"),
+			dateFormat($scope.tempDate.setHours($scope.tempDate.getHours() + 24), "dddd mmmm dS, h:00 TT"),
+			dateFormat($scope.tempDate.setHours($scope.tempDate.getHours() + 24), "dddd mmmm dS, h:00 TT"),
+			dateFormat($scope.tempDate.setHours($scope.tempDate.getHours() + 24), "dddd mmmm dS, h:00 TT"),
+			"After " + dateFormat($scope.tempDate.setHours($scope.tempDate.getHours() + 24), "dddd mmmm dS"),
+			dateFormat( $scope.temp2Date.setHours( $scope.temp2Date.getHours() + 72), "dddd mmmm dS" ) + " and " + dateFormat($scope.temp2Date.setHours($scope.temp2Date.getHours() + 96),"dddd mmmm dS"),
+			"After " + dateFormat($scope.temp2Date.setHours($scope.temp2Date.getHours() + 24), "dddd mmmm dS") ];
+
 	}
+
 	$scope.mapDeadline();
 
 
