@@ -13,8 +13,19 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 	
 	$scope.selectedDeadline;
 	$scope.difficultyLevel;
-	$scope.mappedDeadline;
 
+	$scope.additionalOne = {
+		title: "Plagiarism Report",
+		icon: "fa fa-flag-o",
+		price: 29.99,
+		items: ["Plagiarism report", "Top writer assigned", "Receive drafts"]
+	}
+	$scope.additionalTwo = {
+		title: "Copies of Cited Scholarly Articles",
+		icon: "fa fa-file-pdf-o",
+		price: 39.99,
+		items: ["Copies of Cited Scholarly Articles", "PDF copies", "MIT License autographed by Aaron Swartz?"]
+	}
 	//menu control
 	$scope.showEssay = function () {
 		$scope.presBool = false;
@@ -122,7 +133,6 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 		round: "1",
 		skin: "round",
 		callback: function (value, released) {
-				console.log(value + " " + released);
 				$scope.formData.pages = parseInt(value);
 				$scope.formData.words = ($scope.formData.pages*300);
 				angular.element('i.range')[0].style.width = value + "%";
@@ -135,13 +145,11 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 
 	$scope.pageActivate = function () {
 		$scope.pageBool = true;
-		console.log("pageactivate! pages: " + $scope.formData.pages + "words: " + $scope.formData.words);
 		$scope.formData.pages = $scope.formData.words/300;
 		}
 	$scope.wordActivate = function () {
 		$scope.pageBool = false;
-		console.log("wordactivate! pages: " + $scope.formData.pages + "words: " + $scope.formData.words);
-		$scope.formData.words = $scope.formData.pages*300;
+		$scope.formData.words = ($scope.formData.pages*300);
 
 	}
 	$scope.counterFinish = function () {
@@ -238,6 +246,21 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 		}],
 		link: function(scope,element,attrs) {
 				
+		}
+	}
+})
+.directive('additionalTab', function() {
+	return {
+		restrict: 'E',
+		scope: { obj: '='},
+		controller: ['$scope','$element','$timeout', function ($scope, $element,$timeout) {	
+
+		}],
+		templateUrl: "/views/partials/additionaltab.html",
+		link: function(scope,element,attrs) {
+				angular.element(element[0]).bind('click', function () {
+					console.log("Bang! " + scope.obj);					
+				});
 		}
 	}
 });

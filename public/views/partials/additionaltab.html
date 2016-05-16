@@ -1,0 +1,9 @@
+<div>
+	<div class="icon-wrap"><i class="{{obj.icon}}" aria-hidden="true"></i></div>
+	<br>
+	<h4 class="text-center">{{obj.title}}</h4>
+	<h3 class="text-center">{{obj.price | currency}}</h3>
+	<ul>
+		<li ng-repeat="item in obj.items"> {{ item }}</li>
+	</ul>
+</div>
