@@ -156,14 +156,14 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 		return $scope.formData.pages * $scope.formData.pricePerPage }, function (newValue,oldValue) {
 			$scope.formData.oldCost = oldValue;
 			$scope.formData.totalCost = newValue;
-			$scope.formData.pages ? $scope.value = $scope.formData.pages.toString() : $scope.value = "0";
+			$scope.formData.pages ? ( $scope.formData.pages <= 100 ? $scope.value = $scope.formData.pages.toString() : $scope.value = "100" ) : $scope.value = "0";
 			angular.element('i.range')[0].style.width = $scope.value + "%";
 			angular.element('.jslider-pointer')[0].style.left = $scope.value + "%";
 	});
 	$scope.$watch(function () { 
 		return $scope.formData.words}, function () {
 		$scope.formData.pages = $scope.formData.words/300;
-		$scope.formData.pages ? $scope.value = $scope.formData.pages.toString() : $scope.value = "0";
+		$scope.formData.pages ? ( $scope.formData.pages <= 100 ? $scope.value = $scope.formData.pages.toString() : $scope.value = "100" ) : $scope.value = "0";
 		$scope.formData.totalCost = $scope.formData.pages * $scope.formData.pricePerPage;
 		angular.element('i.range')[0].style.width = $scope.value + "%";
 		angular.element('.jslider-pointer')[0].style.left = $scope.value + "%";
