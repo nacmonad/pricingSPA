@@ -24,6 +24,7 @@ taking too long on load times...
 	<div id="my-main-wrap" class="container">
 		<div ng-include = "'views/partials/myselector.html'"></div>
 		<br><h6>Select your deadline and academic level</h6><br>
+		<div class="row">
 			<div class="col-xs-12 col-md-8 object-a">
 				<div ng-include = "'views/partials/essay.html'" ng-show="essayBool" ng-controller="EssayCtrl"></div>
 				<div  ng-include = "'views/partials/presentation.html'" ng-show="presBool" ng-controller="PresCtrl"></div>
@@ -31,7 +32,10 @@ taking too long on load times...
 			</div>
 			<div class="col-xs-4 col-md-4 object-b" ng-controller="PriceWdgtCtrl" ng-include="'views/partials/pricewdgt.html'">
 			</div>
-		
+		</div>
+		<div class="row">
+			<p class="info-span">Do you have a more complex assignment and not sure how many pages to order? Do you have an assignment in these subject areas: maths, statistics, sciences, computer programming, commerce, economics, engineering, finance or other technical related fields? Send us all your assignment information through our Get A Quote page for a free customized quote.</p>
+		</div>
 	</div>
 <br><br><hr><br><br>
 

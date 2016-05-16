@@ -1,9 +1,12 @@
+body { 
+    font-family: 'Montserrat', sans-serif;
+}
 .selector-block {
 	-webkit-padding-start: 0px !important;
 }
 .selector-button {
 	display: inline-block;
-    font-family: 'Montserrat', sans-serif;
+    
 	border: 1px solid #dadada;
 	border-radius: 2.5px;
 	width: 136px;
@@ -106,8 +109,7 @@ tbody .cross th {
 }
 
 .price-table thead th:first-child .txt {
-    font-size:12px;
-    font-family: 'PT Sans', sans-serif;
+    font-size:10px;
 }
 
 .price-table thead th {
@@ -130,17 +132,14 @@ tbody .cross th {
 
 }
 .price-table thead th .txt {
-    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
 }
 .price-table tbody th .txt {
-    font-family: 'PT Sans', sans-serif;
     font-size: 10px;
 }
 
 .price-table tbody th .subline {
-    font-family: 'PT Sans', sans-serif;
-    font-size: 0.75em;
+    font-size:8.5px;
     line-height: 1.3;
     color: #9e9a9a;
     margin:0px;
@@ -151,17 +150,19 @@ tbody .cross th {
 
 }
 
-thead tr, thead td, thead th {
-	height:48px !important;
+.price-table thead tr, thead td, thead th {
+	height:48px ;
 }
-tbody tr , tbody td, tbody th{
-	height:48px !important;
+.price-table tbody tr , tbody td, tbody th{
+	height:48px ;
 }
 
-tbody td {
+.price-table tbody td {
 	cursor:pointer;
 }
-
+.jslider td {
+    height:10px;
+}
 .popular-wrap {
 	display:block;
 	position:relative;
@@ -182,7 +183,6 @@ tbody td {
 }
 
  .type-one p {
-    font-family: 'Montserrat', sans-serif;
     font-size: 10px;
     margin:5px;
     color: rgba(0, 70, 150,1);
@@ -221,7 +221,7 @@ tbody td {
 }
 
  .type-two p {
-    font-family: 'Montserrat', sans-serif;
+
     font-size: 10px;
     margin:5px;
     color: rgba(0, 70, 150,1);
@@ -284,12 +284,13 @@ tbody td {
 
 
 form.my-input {
+    width:210px;
     padding:5px;
 }
 .order-now {
     display:flex;
     cursor:pointer;
-    width:200px;
+    width:210px;
     height: 3em;
     justify-content:center;
     align-items:center;
@@ -314,8 +315,11 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none; 
   margin: 0; 
 }
+.free-with-order {
+    padding-top:10px;
+}
 .free-with-order b{
-    font-family: 'Montserrat', sans-serif;
+
     font-size:10px;
 }
 
@@ -326,4 +330,7 @@ input[type=number]::-webkit-outer-spin-button {
 .jslider div.jslider-bg i.range {
     left:0 !important;
     
+}
+.info-span {
+    margin-top:25px;
 }

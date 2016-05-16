@@ -98,6 +98,7 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 })
 
 .controller('PriceWdgtCtrl', function ($scope, $element, $timeout) {
+	$scope.initializing = true;
 	$scope.formData = {};
 	$scope.formData.pages = 1;
 	$scope.formData.words = 300;
@@ -157,16 +158,36 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 			$scope.formData.oldCost = oldValue;
 			$scope.formData.totalCost = newValue;
 			$scope.formData.pages ? ( $scope.formData.pages <= 100 ? $scope.value = $scope.formData.pages.toString() : $scope.value = "100" ) : $scope.value = "0";
-			angular.element('i.range')[0].style.width = $scope.value + "%";
-			angular.element('.jslider-pointer')[0].style.left = $scope.value + "%";
+			$scope.formData.words = $scope.formData.pages*300;
+			//the fix for manipulating/watching after load
+			if ($scope.initializing) {
+				$timeout(function() {
+					$scope.initializing = false; 
+					angular.element('i.range')[0].style.width = $scope.value + "%";
+					angular.element('.jslider-pointer')[0].style.left = $scope.value + "%";});
+			}
+			else {
+				angular.element('i.range')[0].style.width = $scope.value + "%";
+				angular.element('.jslider-pointer')[0].style.left = $scope.value + "%";
+			}
+			
 	});
 	$scope.$watch(function () { 
 		return $scope.formData.words}, function () {
 		$scope.formData.pages = $scope.formData.words/300;
 		$scope.formData.pages ? ( $scope.formData.pages <= 100 ? $scope.value = $scope.formData.pages.toString() : $scope.value = "100" ) : $scope.value = "0";
 		$scope.formData.totalCost = $scope.formData.pages * $scope.formData.pricePerPage;
-		angular.element('i.range')[0].style.width = $scope.value + "%";
-		angular.element('.jslider-pointer')[0].style.left = $scope.value + "%";
+		//the fix for manipulating/watching after load
+			if ($scope.initializing) {
+				$timeout(function() {
+					$scope.initializing = false; 
+					angular.element('i.range')[0].style.width = $scope.value + "%";
+					angular.element('.jslider-pointer')[0].style.left = $scope.value + "%";});
+			}
+			else {
+				angular.element('i.range')[0].style.width = $scope.value + "%";
+				angular.element('.jslider-pointer')[0].style.left = $scope.value + "%";
+			}
 
 	});
 
