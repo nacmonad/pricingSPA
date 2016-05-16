@@ -1,4 +1,4 @@
-var app = angular.module('PricingApp', ['ngAnimate','ngSanitize','counter']);
+var app = angular.module('PricingApp', ['ngAnimate','ngSanitize','counter','ngSlider']);
 
 app.controller('MainCtrl', function ($scope, $element, $timeout) {
 
@@ -97,7 +97,7 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 			];
 })
 
-.controller('PriceWdgtCtrl', function ($scope, $element, $http) {
+.controller('PriceWdgtCtrl', function ($scope, $element, $timeout) {
 	$scope.formData = {};
 	$scope.formData.pages = 1;
 	$scope.formData.words = 300;
@@ -114,7 +114,24 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 	//	}, function errorCb(res) {
 	//		console.log("err : " + res);
 	//	});
-	
+	$scope.sliderOptions = {
+		from: "0",
+		to: "100",
+		step: "1",
+		round: "1",
+		skin: "round",
+		callback: function (value, released) {
+				console.log(value + " " + released);
+				$scope.formData.pages = parseInt(value);
+				$scope.formData.words = ($scope.formData.pages*300);
+				angular.element('i.range')[0].style.width = value + "%";
+				$scope.$apply();
+		}
+	};
+
+	$scope.value = $scope.formData.pages.toString();
+
+
 	$scope.pageActivate = function () {
 		$scope.pageBool = true;
 		console.log("pageactivate! pages: " + $scope.formData.pages + "words: " + $scope.formData.words);
@@ -132,16 +149,25 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 	$scope.orderNow = function () {
 		console.log($scope.formData);
 	}
+	
+
 
 	$scope.$watch(function () { 
 		return $scope.formData.pages * $scope.formData.pricePerPage }, function (newValue,oldValue) {
 			$scope.formData.oldCost = oldValue;
 			$scope.formData.totalCost = newValue;
+			$scope.formData.pages ? $scope.value = $scope.formData.pages.toString() : $scope.value = "0";
+			angular.element('i.range')[0].style.width = $scope.value + "%";
+			angular.element('.jslider-pointer')[0].style.left = $scope.value + "%";
 	});
 	$scope.$watch(function () { 
 		return $scope.formData.words}, function () {
 		$scope.formData.pages = $scope.formData.words/300;
+		$scope.formData.pages ? $scope.value = $scope.formData.pages.toString() : $scope.value = "0";
 		$scope.formData.totalCost = $scope.formData.pages * $scope.formData.pricePerPage;
+		angular.element('i.range')[0].style.width = $scope.value + "%";
+		angular.element('.jslider-pointer')[0].style.left = $scope.value + "%";
+
 	});
 
 	$scope.$watch(function() {
@@ -149,6 +175,8 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 	}, function () {
 		$scope.formData.pricePerPage = 20 * $scope.difficultyLevel / $scope.selectedDeadline;
 	});
+
+	
 
 })
 
