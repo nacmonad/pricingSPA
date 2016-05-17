@@ -4,6 +4,9 @@
 	<h4 class="text-center">{{obj.title}}</h4>
 	<h3 class="text-center">{{obj.price | currency}}</h3>
 	<ul>
-		<li ng-repeat="item in obj.items"> {{ item }}</li>
+		<li ng-repeat="item in obj.items"> {{ item }} <i class="fa fa-question-circle-o" hover-toggle > <a href="#" tooltip-placement="right" tooltip="{{ item }}"></a></i></li>
 	</ul>
+	<button class="btn btn-default add-to-order" ng-click="addOption()" ng-show="!added">Add to order</button>
+	<button class="btn btn-default add-to-order" ng-click="removeOption()" ng-show="added">Remove</button>
+	
 </div>

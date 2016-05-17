@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var nunjucks = require('nunjucks')
+var nunjucks = require('nunjucks');
 
 app.set('port', (process.env.PORT || 5000));
 

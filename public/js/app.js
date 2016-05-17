@@ -1,4 +1,4 @@
-var app = angular.module('PricingApp', ['ngAnimate','ngSanitize','counter','ngSlider']);
+var app = angular.module('PricingApp', ['ngAnimate','ngSanitize','counter','ngSlider','ui.bootstrap']);
 
 app.controller('MainCtrl', function ($scope, $element, $timeout) {
 
@@ -26,6 +26,14 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 		price: 39.99,
 		items: ["Copies of Cited Scholarly Articles", "PDF copies", "MIT License autographed by Aaron Swartz?"]
 	}
+
+	//form data
+	$scope.formData = {};
+	$scope.formData.pages = 1;
+	$scope.formData.words = 300;
+	$scope.formData.totalCost = 420.00;
+	$scope.formData.currencyType = "CAD";
+
 	//menu control
 	$scope.showEssay = function () {
 		$scope.presBool = false;
@@ -64,14 +72,23 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 
 	//table cell listen events
 	
-		$scope.$on('cell-activated', function (event, args) {
+	$scope.$on('cell-activated', function (event, args) {
 					
 					$scope.selectedDeadline = args.deadline;
 					$scope.difficultyLevel = args.level;
 					$scope.$apply();
 				});
 	
-
+	$scope.$on('add-option', function (event, args) {
+		console.log(event);
+		console.log(args);
+		$scope.formData.totalCost += args.optionPrice;
+	});
+	$scope.$on('remove-option',  function (event, args) {
+		console.log(event);
+		console.log(args);
+		$scope.formData.totalCost -= args.optionPrice;
+	});
 })
 
 .controller('EssayCtrl', function ($scope, $element, $attrs) {
@@ -110,22 +127,11 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 
 .controller('PriceWdgtCtrl', function ($scope, $element, $timeout) {
 	$scope.initializing = true;
-	$scope.formData = {};
-	$scope.formData.pages = 1;
-	$scope.formData.words = 300;
-	$scope.formData.totalCost = 420.00;
-	$scope.formData.currencyType = "CAD";
+	
 	
 	$scope.freeWithOrder = ["Bibliography and Title","Unlimited revisions","Formatting","Proofreading","Assignment Scheduler"]
 	$scope.pageBool = true;
 	
-	//$http.get('http://api.fixer.io/latest?base=USD').then(
-	//	function successCb(res) {
-	//		$scope.formData.fxusd = res.data;
-	//		console.log("USDCAD = " + $scope.formData.fxusd.rates.CAD);
-	//	}, function errorCb(res) {
-	//		console.log("err : " + res);
-	//	});
 	$scope.sliderOptions = {
 		from: "0",
 		to: "100",
@@ -133,40 +139,40 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 		round: "1",
 		skin: "round",
 		callback: function (value, released) {
-				$scope.formData.pages = parseInt(value);
-				$scope.formData.words = ($scope.formData.pages*300);
+				$scope.$parent.formData.pages = parseInt(value);
+				$scope.$parent.formData.words = ($scope.$parent.formData.pages*300);
 				angular.element('i.range')[0].style.width = value + "%";
 				$scope.$apply();
 		}
 	};
 
-	$scope.value = $scope.formData.pages.toString();
+	$scope.value = $scope.$parent.formData.pages.toString();
 
 
 	$scope.pageActivate = function () {
 		$scope.pageBool = true;
-		$scope.formData.pages = $scope.formData.words/300;
+		$scope.$parent.formData.pages = $scope.$parent.formData.words/300;
 		}
 	$scope.wordActivate = function () {
 		$scope.pageBool = false;
-		$scope.formData.words = ($scope.formData.pages*300);
+		$scope.$parent.formData.words = ($scope.$parent.formData.pages*300);
 
 	}
 	$scope.counterFinish = function () {
 		console.log("done counting");
 	}
 	$scope.orderNow = function () {
-		console.log($scope.formData);
+		console.log($scope.$parent.formData);
 	}
 	
-
+	
 
 	$scope.$watch(function () { 
-		return $scope.formData.pages * $scope.formData.pricePerPage }, function (newValue,oldValue) {
-			$scope.formData.oldCost = oldValue;
-			$scope.formData.totalCost = newValue;
-			$scope.formData.pages ? ( $scope.formData.pages <= 100 ? $scope.value = $scope.formData.pages.toString() : $scope.value = "100" ) : $scope.value = "0";
-			$scope.formData.words = $scope.formData.pages*300;
+		return $scope.$parent.formData.pages * $scope.$parent.formData.pricePerPage }, function (newValue,oldValue) {
+			$scope.$parent.formData.oldCost = oldValue;
+			$scope.$parent.formData.totalCost = newValue;
+			$scope.$parent.formData.pages ? ( $scope.$parent.formData.pages <= 100 ? $scope.value = $scope.$parent.formData.pages.toString() : $scope.value = "100" ) : $scope.value = "0";
+			$scope.$parent.formData.words = $scope.$parent.formData.pages*300;
 			//the fix for manipulating/watching after load
 			if ($scope.initializing) {
 				$timeout(function() {
@@ -181,10 +187,10 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 			
 	});
 	$scope.$watch(function () { 
-		return $scope.formData.words}, function () {
-		$scope.formData.pages = $scope.formData.words/300;
-		$scope.formData.pages ? ( $scope.formData.pages <= 100 ? $scope.value = $scope.formData.pages.toString() : $scope.value = "100" ) : $scope.value = "0";
-		$scope.formData.totalCost = $scope.formData.pages * $scope.formData.pricePerPage;
+		return $scope.$parent.formData.words}, function () {
+		$scope.$parent.formData.pages = $scope.$parent.formData.words/300;
+		$scope.$parent.formData.pages ? ( $scope.$parent.formData.pages <= 100 ? $scope.value = $scope.$parent.formData.pages.toString() : $scope.value = "100" ) : $scope.value = "0";
+		$scope.$parent.formData.totalCost = $scope.$parent.formData.pages * $scope.$parent.formData.pricePerPage;
 		//the fix for manipulating/watching after load
 			if ($scope.initializing) {
 				$timeout(function() {
@@ -202,7 +208,7 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 	$scope.$watch(function() {
 		return $scope.difficultyLevel / $scope.selectedDeadline;
 	}, function () {
-		$scope.formData.pricePerPage = 20 * $scope.difficultyLevel / $scope.selectedDeadline;
+		$scope.$parent.formData.pricePerPage = 20 * $scope.difficultyLevel / $scope.selectedDeadline;
 	});
 
 	
@@ -252,15 +258,46 @@ app.controller('MainCtrl', function ($scope, $element, $timeout) {
 .directive('additionalTab', function() {
 	return {
 		restrict: 'E',
-		scope: { obj: '='},
-		controller: ['$scope','$element','$timeout', function ($scope, $element,$timeout) {	
-
+		scope: { 
+			obj: '='
+		},
+		controller: ['$scope','$element','$timeout', function ($scope, $element,$timeout) {
+			$scope.added = false;	
+			$scope.addOption = function () {
+					//scope.$$prevSibling.formData.totalCost += obj.price;
+					$scope.added = true;
+					$scope.$emit('add-option', {optionPrice: $scope.obj.price});
+				}
+			$scope.removeOption = function () {
+					$scope.added = false;
+					$scope.$emit('remove-option', {optionPrice: $scope.obj.price});
+				}
 		}],
 		templateUrl: "/views/partials/additionaltab.html",
 		link: function(scope,element,attrs) {
-				angular.element(element[0]).bind('click', function () {
-					console.log("Bang! " + scope.obj);					
-				});
+				
+		}
+	}
+})
+.directive('hoverToggle', function() {
+	return {
+		restrict: 'A',
+		scope: true,
+		controller: ['$scope','$element','$timeout', function ($scope, $element,$timeout) {
+			
+		}],
+		link: function(scope,element,attrs) {
+			element.bind('mouseover', function () {
+				element.toggleClass('fa fa-question-circle-o');
+				element.toggleClass('fa fa-question-circle');
+				
+			});
+			element.bind('mouseleave', function () {
+				element.toggleClass('fa fa-question-circle-o');
+				element.toggleClass('fa fa-question-circle');
+
+			});
+					
 		}
 	}
 });

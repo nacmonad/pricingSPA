@@ -99,7 +99,7 @@ tbody .cross th {
 }
 .price-table {
 	width:100%;
-    margin-bottom:15px;
+    margin-bottom:25px;
 }
 
 .price-table thead th:first-child {
@@ -344,6 +344,15 @@ additional-tab {
 additional-tab div {
     border:1px solid black;
     width:210px;
+    text-align: center;
+}
+
+additional-tab div ul {
+    padding-left:0px;
+}
+additional-tab div li {
+    font-size:10px;
+    list-style: none;
 }
 
 .icon-wrap {
@@ -358,4 +367,7 @@ additional-tab div {
     border-radius:24px;
     margin-left:auto;
     margin-right:auto;
+}
+.add-to-order {
+    margin-bottom:15px;
 }
